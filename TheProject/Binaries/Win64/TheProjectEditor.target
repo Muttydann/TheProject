@@ -5578,6 +5578,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Editor/StaticMeshEditorModeling/Binaries/Win64/UnrealEditor-StaticMeshEditorModeling.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Editor/StaticMeshEditorModeling/Binaries/Win64/UnrealEditor-StaticMeshEditorModeling.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(EngineDir)/Plugins/Editor/StaticMeshEditorModeling/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Editor/StylusInput/Binaries/Win64/UnrealEditor-StylusInput.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -33192,6 +33204,10 @@
 			"Type": "UFS"
 		},
 		{
+			"Path": "$(EngineDir)/Plugins/Editor/StaticMeshEditorModeling/StaticMeshEditorModeling.uplugin",
+			"Type": "UFS"
+		},
+		{
 			"Path": "$(EngineDir)/Plugins/Editor/StylusInput/StylusInput.uplugin",
 			"Type": "UFS"
 		},
@@ -33832,6 +33848,7 @@
 		"SoundFields",
 		"SpeedTreeImporter",
 		"StateTree",
+		"StaticMeshEditorModeling",
 		"StudioTelemetry",
 		"StylusInput",
 		"SubversionSourceControl",

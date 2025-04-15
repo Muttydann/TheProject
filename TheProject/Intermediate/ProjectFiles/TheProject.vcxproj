@@ -252,6 +252,7 @@
     <None Include="..\..\TheProject.uproject"/>
     <None Include="..\..\Source\TheProject.Target.cs"/>
     <None Include="..\..\Source\TheProjectEditor.Target.cs"/>
+    <None Include="..\..\.vsconfig"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>

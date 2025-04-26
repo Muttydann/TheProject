@@ -47,6 +47,7 @@ class ATheProjectCharacter : public ACharacter
 public:
 	ATheProjectCharacter();
 	
+	void UpdateForm();
 
 protected:
 
@@ -55,6 +56,10 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
+
+	int playerForm;
+
+	USkeletalMeshComponent* model;
 			
 
 protected:

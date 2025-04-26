@@ -53,6 +53,9 @@ ATheProjectCharacter::ATheProjectCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+	model = ATheProjectCharacter::GetMesh();
+	playerForm = 0;
+	UpdateForm();
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -126,5 +129,21 @@ void ATheProjectCharacter::Look(const FInputActionValue& Value)
 		// add yaw and pitch input to controller
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+
+void ATheProjectCharacter::UpdateForm() {
+	switch (playerForm) {
+
+	case 0:
+		//Scale the model to the starting smaller size
+		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
+		break;
+	case 1:
+		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .9f));
+		break;
+	default:
+		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
+		break;
 	}
 }

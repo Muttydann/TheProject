@@ -137,7 +137,7 @@ void ATheProjectCharacter::UpdateForm() {
 
 	case 0:
 		//Scale the model to the starting smaller size
-		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
+		GetMesh()->SetWorldScale3D((FVector)(.6f, .6f, .6f));
 		break;
 	case 1:
 		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .9f));

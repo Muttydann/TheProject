@@ -49,6 +49,10 @@ public:
 	
 	void UpdateForm();
 
+	void Score(int score);
+
+	int Score();
+
 protected:
 
 	/** Called for movement input */
@@ -58,6 +62,9 @@ protected:
 	void Look(const FInputActionValue& Value);
 
 	int playerForm;
+
+	UPROPERTY(BlueprintReadWrite)
+	int playerScore;
 
 	USkeletalMeshComponent* model;
 			

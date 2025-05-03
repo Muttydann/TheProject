@@ -55,6 +55,7 @@ ATheProjectCharacter::ATheProjectCharacter()
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
 	model = ATheProjectCharacter::GetMesh();
 	playerForm = 0;
+	playerScore = 0;
 	UpdateForm();
 }
 
@@ -146,4 +147,11 @@ void ATheProjectCharacter::UpdateForm() {
 		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
 		break;
 	}
+}
+
+void ATheProjectCharacter::Score(int scor) {
+	this->playerScore += scor;
+}
+int ATheProjectCharacter::Score() {
+	return playerScore;
 }

@@ -29,6 +29,8 @@ void UPickup::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponen
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// Rotate the pickup item
+	FRotator NewRotation = GetOwner()->GetActorRotation();
+	NewRotation.Yaw += DeltaTime * 50.0f; // Rotate at 50 degrees per second
 }
 

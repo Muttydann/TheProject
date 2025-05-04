@@ -46,12 +46,21 @@ class ATheProjectCharacter : public ACharacter
 
 public:
 	ATheProjectCharacter();
+
+	virtual void Tick(float DeltaTime) override;
 	
+	UFUNCTION(BlueprintCallable)
 	void UpdateForm();
+
+	UFUNCTION(BlueprintCallable)
+	void Damage();
 
 	void Score(int score);
 
 	int Score();
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int health;
 
 protected:
 
@@ -61,12 +70,15 @@ protected:
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
 
+	UPROPERTY(BlueprintReadWrite)
 	int playerForm;
 
 	UPROPERTY(BlueprintReadWrite)
 	int playerScore;
 
 	USkeletalMeshComponent* model;
+
+
 			
 
 protected:

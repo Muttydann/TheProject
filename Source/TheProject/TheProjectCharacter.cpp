@@ -10,6 +10,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "ProjAnimInstance.h"
 
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
@@ -57,6 +58,27 @@ ATheProjectCharacter::ATheProjectCharacter()
 	playerForm = 0;
 	playerScore = 0;
 	UpdateForm();
+}
+
+void ATheProjectCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	auto animInst = Cast<UProjAnimInstance>(model->GetAnimInstance());
+
+	if (animInst->State == EPlayerState::Jumping) {
+		if (GetCharacterMovement()->Velocity.Z == 0) {
+			animInst->State = EPlayerState::Moving;
+		}
+	}
+
+	// Update the animation instance
+	
+	animInst->Speed = GetCharacterMovement()->Velocity.Size2D();
+
+	if (GetCharacterMovement()->Velocity.Z > 0 || GetCharacterMovement()->Velocity.Z < -5) {
+		animInst->State = EPlayerState::Jumping;
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -138,20 +160,23 @@ void ATheProjectCharacter::UpdateForm() {
 
 	case 0:
 		//Scale the model to the starting smaller size
-		GetMesh()->SetWorldScale3D((FVector)(.6f, .6f, .6f));
+		GetCapsuleComponent()->SetWorldScale3D((FVector)(.6f, .6f, .6f));
 		break;
 	case 1:
-		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .9f));
+		GetCapsuleComponent()->SetWorldScale3D((FVector)(1.f, 1.f, .9f));
 		break;
 	default:
-		GetMesh()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
+		GetCapsuleComponent()->SetWorldScale3D((FVector)(1.f, 1.f, .6f));
 		break;
 	}
 }
 
 void ATheProjectCharacter::Score(int scor) {
-	this->playerScore += scor;
+	playerScore += scor;
 }
 int ATheProjectCharacter::Score() {
 	return playerScore;
+}
+
+void ATheProjectCharacter::Damage() {
 }
